@@ -28,7 +28,7 @@ const Dash = ({ auth, deleteUserDispatch, logoutUserDispatch }) => {
 
   return (
     <section className="Dash">
-      Hello { auth.username }
+      <p className="text-2xl">Hello { auth.username }</p>
       <button 
         onClick={handleClick}
         name='logout'

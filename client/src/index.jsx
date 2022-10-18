@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './assets/main.css';
 
 // Redux
 import { Provider } from 'react-redux';
