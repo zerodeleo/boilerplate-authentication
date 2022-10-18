@@ -14,7 +14,7 @@
     "start": "node index.js",
     "install-all": "npm i && cd client && npm i"
   },
-  "author": "",
+  "author": "zerodeleo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
