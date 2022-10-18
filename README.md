@@ -16,3 +16,4 @@ lear
 - Connect to GitHub
 - Enable automatic deploys
 - Add .env variables to heroku config vars
+- Add <code>MODE="production"</code> to heroku config vars
