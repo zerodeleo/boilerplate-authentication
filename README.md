@@ -24,6 +24,7 @@ Kudos to Christian Ek for encrypting the password.
 - Frontend routing?
 - How do I authenticate a user?
 
+# SETUP
 ## 1. Setting up mongodb
 - Login to mongodb atlas
 - Create new project
