@@ -1,4 +1,4 @@
-# Zerodeleo
+# zerodeleo
 ## 💻💻💻 MERN-STACK BOILERPLATE
 Follow these easy steps and you will have a fullstack MERN application up and running within 10min.
 
