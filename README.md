@@ -32,7 +32,7 @@ Kudos to Christian Ek for encrypting the password.
     - Make sure to name cluster before creating it
     - Add authentication to .env file
         - <code>ATLAS_URI="the URI you get when clicking connect after cluster is created"</code>
-    - Add 0.0.0.0 IP Address access 
+    - Add 0.0.0.0 IP Address access
 - Connect cluster    
 ## 2. Setting up heroku
 - Login to heroku
