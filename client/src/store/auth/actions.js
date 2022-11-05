@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { initialState } from "./initialState";
 const API_URL = '/api/users/';
 
 const service = async (method, url, arg, thunkAPI) => {
