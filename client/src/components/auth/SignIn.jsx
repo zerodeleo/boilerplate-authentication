@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 // Components
 import Error from '../error/Error';
 import FormSignIn from '../layout/FormSignIn';
 
-// Dispatches
-import { signIn } from '../../store/actions/authActions';
+// Thunks
+import { signIn } from '../../store/auth/actions'
 
-function SignIn({ signInDispatch, authError, auth }) {
+const SignIn = () => {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
   });
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
 
+  const { 
+    uid,
+    authSuccess, 
+    authLoading, 
+    authError 
+  } = useSelector((state) => state.auth);
   
   useEffect(() => {
     if (authError) setError(true)
   },[authError]);
   
-  if (auth.uid) return <Navigate to="/" />;
+  if (uid) return <Navigate to="/" />;
 
   const handleChange = (e) => {
     setError(false);
@@ -31,7 +38,7 @@ function SignIn({ signInDispatch, authError, auth }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signInDispatch(credentials);
+    dispatch(signIn(credentials));
   };
 
   return (
@@ -45,13 +52,4 @@ function SignIn({ signInDispatch, authError, auth }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  authError: state.auth.authError,
-  auth: state.auth,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  signInDispatch: (credentials) => dispatch(signIn(credentials)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default SignIn;

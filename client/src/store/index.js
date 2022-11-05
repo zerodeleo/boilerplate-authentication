@@ -1,7 +1,8 @@
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./auth/reducer";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-export default store;
+export const store = configureStore({
+  reducer: {
+    auth: authReducer
+  },
+});

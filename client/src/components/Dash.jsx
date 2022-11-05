@@ -1,34 +1,30 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-// Redux
-import { connect } from 'react-redux';
+// // Redux
+import { useDispatch, useSelector } from 'react-redux';
 
-// Dispatches
-import { logoutUser, deleteUser } from '../store/actions/authActions';
+// // Dispatches
+import { logoutUser, deleteUser } from '../store/auth/actions.js';
 
-const Dash = ({ auth, deleteUserDispatch, logoutUserDispatch }) => {
-  if (!auth.uid) return <Navigate to="/signin" />;
+const Dash = () => {
+  const { uid, username } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
+  if (!uid) return <Navigate to="/signin" />;
+
+  console.log('this is uid ' + uid)
 
   const handleClick = (e) => {
     e.preventDefault();
     const { name } = e.target;
-    switch (name) {
-      case 'logout':
-        logoutUserDispatch();
-        break;
-      case 'delete':
-        deleteUserDispatch(auth.uid);
-        break;
-      default:
-        console.log('Nothing happened');
-        break;
-    }
+    name === 'logout' && dispatch(logoutUser());
+    name === 'delete' && dispatch(deleteUser({ uid }));
   };
 
   return (
     <section className="Dash">
-      <p className="text-2xl">Hello { auth.username }</p>
+      <p className="text-2xl">Hello { username }</p>
       <button 
         onClick={handleClick}
         name='logout'
@@ -45,14 +41,4 @@ const Dash = ({ auth, deleteUserDispatch, logoutUserDispatch }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-  auth: state.auth,
-}};
-
-const mapDispatchToProps = (dispatch) => ({
-  deleteUserDispatch: (uid) => dispatch(deleteUser(uid)),
-  logoutUserDispatch: () => dispatch(logoutUser()),  
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dash);
+export default Dash;

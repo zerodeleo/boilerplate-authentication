@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 // Components
@@ -7,21 +7,26 @@ import Error from '../error/Error';
 import FormSignUp from '../layout/FormSignUp';
 
 // Dispatches
-import { signUp } from '../../store/actions/authActions';
+import { signUp } from '../../store/auth/actions';
 
-function SignUp({ signUpDispatch, authError, auth }) {
+function SignUp() {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
   });
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
 
-  
+  const { 
+    uid,
+    authError
+  } = useSelector((state) => state.auth);
+
   useEffect(() => {
     if (authError) setError(true)
   },[authError]);
   
-  if (auth.uid) return <Navigate to="/" />;
+  if (uid) return <Navigate to="/" />;
 
   const handleChange = (e) => {
     setError(false);
@@ -31,7 +36,7 @@ function SignUp({ signUpDispatch, authError, auth }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUpDispatch(credentials);
+    dispatch(signUp(credentials));
   };
 
   return (
@@ -45,13 +50,4 @@ function SignUp({ signUpDispatch, authError, auth }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  authError: state.auth.authError,
-  auth: state.auth,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  signUpDispatch: (credentials) => dispatch(signUp(credentials)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default SignUp;
