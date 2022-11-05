@@ -10,7 +10,7 @@ Kudos to Christian Ek for encrypting the password.
 ### This is a WIP repo.
 - TS will be implemented
 - ✅ Tailwind will be added
-- the Redux state management will be refactored to use Redux slices
+- ✅ the Redux state management will be refactored to use Redux slices
 - Etc.
 
 ### These are the FAQ that I had which this boilerplate covers:
