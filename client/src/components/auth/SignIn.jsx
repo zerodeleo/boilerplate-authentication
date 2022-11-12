@@ -4,7 +4,10 @@ import { Navigate } from 'react-router-dom';
 
 // Components
 import Error from '../error/Error';
-import FormSignIn from '../layout/FormSignIn';
+import FormSignIn from './FormSignIn';
+
+// Styles
+import * as styles from '../../style'
 
 // Thunks
 import { signIn } from '../../store/auth/actions'
@@ -12,26 +15,24 @@ import { signIn } from '../../store/auth/actions'
 const SignIn = () => {
   const [credentials, setCredentials] = useState({
     username: '',
-    password: ''
+    password: '',
   });
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   const { 
     uid,
-    authSuccess, 
-    authLoading, 
     authError 
   } = useSelector((state) => state.auth);
   
   useEffect(() => {
-    if (authError) setError(true)
+    if (authError) setError(b => !b)
   },[authError]);
   
   if (uid) return <Navigate to="/" />;
 
   const handleChange = (e) => {
-    setError(false);
+    setError(b => !b);
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
@@ -42,12 +43,12 @@ const SignIn = () => {
   };
 
   return (
-    <section className="Form__container">
-          <FormSignIn 
-            credentials={credentials}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit} />
-         { error ? <Error msg={authError} /> : null }
+    <section className={`${styles.authFormContainer}`}>
+      <FormSignIn 
+        credentials={credentials}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit} />
+        { error ? <Error msg={authError} /> : null }
     </section>
   );
 }

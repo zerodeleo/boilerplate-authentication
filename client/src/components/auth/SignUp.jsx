@@ -4,17 +4,21 @@ import { Navigate } from 'react-router-dom';
 
 // Components
 import Error from '../error/Error';
-import FormSignUp from '../layout/FormSignUp';
+import FormSignUp from './FormSignUp';
 
 // Dispatches
 import { signUp } from '../../store/auth/actions';
 
+// Styles
+import * as styles from '../../style'
+
 function SignUp() {
   const [credentials, setCredentials] = useState({
     username: '',
-    password: ''
+    password: '',
+    passwordRepeat: ''
   });
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const { 
@@ -23,7 +27,7 @@ function SignUp() {
   } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (authError) setError(true)
+    if (authError) setError(authError)
   },[authError]);
   
   if (uid) return <Navigate to="/" />;
@@ -36,16 +40,17 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUp(credentials));
+    credentials.password === credentials.passwordRepeat && dispatch(signUp(credentials));
+    setError("Passwords don't match");
   };
 
   return (
-    <section className="Form__container">
-          <FormSignUp 
-            credentials={credentials}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit} />
-         { error ? <Error msg={authError} /> : null }
+    <section className={`${styles.authFormContainer}`}>
+      <FormSignUp 
+      credentials={credentials}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit} />
+      { error ? <Error msg={authError ? authError : error} /> : null }
     </section>
   );
 }

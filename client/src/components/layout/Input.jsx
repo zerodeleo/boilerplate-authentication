@@ -4,6 +4,7 @@ function Input(props) {
   return (
     <>
       <input
+        autoComplete="off"
         {...props}
         values={null}
       />
