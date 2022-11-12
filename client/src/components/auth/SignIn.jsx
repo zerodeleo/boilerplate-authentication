@@ -12,6 +12,9 @@ import * as styles from '../../style'
 // Thunks
 import { signIn } from '../../store/auth/actions'
 
+// Utils
+import { validate } from '../../utils/regex';
+
 const SignIn = () => {
   const [credentials, setCredentials] = useState({
     username: '',
@@ -26,29 +29,34 @@ const SignIn = () => {
   } = useSelector((state) => state.auth);
   
   useEffect(() => {
-    if (authError) setError(b => !b)
+    if (authError) setError(authError)
   },[authError]);
   
   if (uid) return <Navigate to="/" />;
 
   const handleChange = (e) => {
-    setError(b => !b);
+    setError(false);
     const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
+    if (value === '') return setCredentials({ ...credentials, [name]: value });
+    if (/ $/.test(value)) return setError(`Space not allowed`);
+    if (!validate({name, value})) return setError(`Character ${value[value.length - 1]} not allowed`);
+    
+    validate({ name, value }) && setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(false);
     dispatch(signIn(credentials));
   };
 
   return (
     <section className={`${styles.authFormContainer}`}>
-      <FormSignIn 
+      { error ? <Error className={`${styles.authError}`} msg={authError ? authError : error} /> : null }
+      <FormSignIn
         credentials={credentials}
         handleChange={handleChange}
         handleSubmit={handleSubmit} />
-        { error ? <Error msg={authError} /> : null }
     </section>
   );
 }

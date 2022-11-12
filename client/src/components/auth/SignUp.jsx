@@ -12,6 +12,9 @@ import { signUp } from '../../store/auth/actions';
 // Styles
 import * as styles from '../../style'
 
+// Utils
+import { validate } from '../../utils/regex';
+
 function SignUp() {
   const [credentials, setCredentials] = useState({
     username: '',
@@ -35,22 +38,26 @@ function SignUp() {
   const handleChange = (e) => {
     setError(false);
     const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
+    if (value === '') return setCredentials({ ...credentials, [name]: value });
+    if (/ $/.test(value)) return setError(`Space not allowed`);
+    if (!validate({name, value})) return setError(`Character ${value[value.length - 1]} not allowed`);
+    
+    validate({ name, value }) && setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(false);
     credentials.password === credentials.passwordRepeat && dispatch(signUp(credentials));
-    setError("Passwords don't match");
   };
 
   return (
     <section className={`${styles.authFormContainer}`}>
+      { error ? <Error className={styles.authError} msg={authError ? authError : error} /> : null }
       <FormSignUp 
-      credentials={credentials}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit} />
-      { error ? <Error msg={authError ? authError : error} /> : null }
+        credentials={credentials}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit} />
     </section>
   );
 }
