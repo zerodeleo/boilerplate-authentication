@@ -5,8 +5,8 @@ function Button(props) {
   return (
     <button {...props}>
       { props.txt }
-      { props.txtNextLine && <br/> }
-      { props.txtNextLine && props.txtNextLine }
+      { props.txtnextline && <br/> }
+      { props.txtnextline && props.txtnextline }
     </button>);
 }
 

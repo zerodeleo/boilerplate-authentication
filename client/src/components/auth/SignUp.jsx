@@ -52,8 +52,6 @@ function SignUp() {
     dispatch(signUp(credentials));
   };
 
-  console.log(error);
-
   return (
     <section className={`${styles.authFormContainer}`}>
       <FormSignUp 

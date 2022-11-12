@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 // Components
@@ -12,14 +12,14 @@ import { logoutUser, deleteUser } from '../store/auth/actions.js';
 
 // Styles
 import * as styles from '../style'
+import UploadProfileImage from './UploadProfileImage';
+import Bio from './Bio';
 
 const Dash = () => {
   const { uid, username } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   if (!uid) return <Navigate to="/signin" />;
-
-  console.log('this is uid ' + uid)
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -34,6 +34,8 @@ const Dash = () => {
         <h1 className={`${styles.h2}`}>Hello</h1> 
         <h2 className={`${styles.h1}`}>{ username }</h2>
       </article>
+      <UploadProfileImage/>
+      <Bio/>
       <article className={`${styles.authBtnContainer}`}>
         <Button
           className={`${styles.authSettingsBtn}`}
@@ -45,7 +47,7 @@ const Dash = () => {
           onClick={handleClick}
           name='delete'
           txt={`Delete`}
-          txtNextLine={`Account`}/>
+          txtnextline={`Account`}/>
       </article>
     </section>
   );
