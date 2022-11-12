@@ -8,7 +8,7 @@ import AuthInput from './AuthInput';
 // Styles
 import * as styles from '../../style'
 
-const FormSignIn = ({ children, credentials, handleChange, handleSubmit }) => {
+const FormSignIn = ({ credentials, handleChange, handleSubmit }) => {
   const navigate = useNavigate();
 
   return (

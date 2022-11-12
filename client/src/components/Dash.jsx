@@ -1,11 +1,17 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-// // Redux
+// Components
+import Button from './layout/Button';
+
+// Redux
 import { useDispatch, useSelector } from 'react-redux';
 
-// // Dispatches
+// Dispatches
 import { logoutUser, deleteUser } from '../store/auth/actions.js';
+
+// Styles
+import * as styles from '../style'
 
 const Dash = () => {
   const { uid, username } = useSelector(state => state.auth);
@@ -23,20 +29,24 @@ const Dash = () => {
   };
 
   return (
-    <section className="Dash">
-      <p className="text-2xl">Hello { username }</p>
-      <button 
-        onClick={handleClick}
-        name='logout'
-      >
-        Log Out
-      </button>
-      <button 
-        onClick={handleClick}
-        name='delete'
-      >
-        Delete
-      </button>
+    <section className={`${styles.container}`}>
+      <article className={`${styles.container}`}>
+        <h1 className={`${styles.h2}`}>Hello</h1> 
+        <h2 className={`${styles.h1}`}>{ username }</h2>
+      </article>
+      <article className={`${styles.authBtnContainer}`}>
+        <Button
+          className={`${styles.authSettingsBtn}`}
+          onClick={handleClick}
+          name='logout'
+          txt='Log Out'/>
+        <Button
+          className={`${styles.authSettingsBtn}`}
+          onClick={handleClick}
+          name='delete'
+          txt={`Delete`}
+          txtNextLine={`Account`}/>
+      </article>
     </section>
   );
 };

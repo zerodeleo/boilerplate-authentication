@@ -48,8 +48,11 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
-    credentials.password === credentials.passwordRepeat && dispatch(signUp(credentials));
+    if (credentials.password !== credentials.passwordRepeat) return setError("Passwords don't match");
+    dispatch(signUp(credentials));
   };
+
+  console.log(error);
 
   return (
     <section className={`${styles.authFormContainer}`}>
@@ -60,6 +63,6 @@ function SignUp() {
       { error ? <Error className={styles.authError} msg={authError ? authError : error} /> : null }
     </section>
   );
-}
+};
 
 export default SignUp;

@@ -42,7 +42,7 @@ const FormSignUp = ({ credentials, handleChange, handleSubmit }) => {
       />
       <Button
         className={`${styles.authNavBtn}`}
-        onClick={() => navigate("/signin")}
+        onClick={() => navigate("/signin") }
         txt="Already have an account?"
         type="button"
       />
