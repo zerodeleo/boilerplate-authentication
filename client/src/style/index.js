@@ -4,11 +4,11 @@ export const gridCenterScreen = 'grid place-items-center h-screen'
 
 
 // Sign in and sign up form
-export const authFormContainer = 'rounded-lg w-3/4';
+export const authFormContainer = 'rounded-lg w-3/4 lg:w-1/2';
 export const authForm = 'flex flex-col p-10 shadow-lg rounded-lg justify-center';
 export const authInput = 'font-shrikhand focus:outline-none focus:bg-tetrisPurple-800 text-tetrisYellow-100 bg-transparent w-full rounded py-2 px-3 shadow-inner';
 export const authInputLabel = 'text-tetrisYellow-100 tracking-widest font-patrick-hand transform transition-all absolute top-0 left-0 h-full flex items-center pl-3 text-sm group-focus-within:text-xs peer-valid:text-xs group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0'
 export const authInputLabelSmall = 'text-tetrisYellow-100 tracking-widest font-patrick-hand absolute top-0 left-0 h-full flex items-center pl-3 text-sm text-xs text-xs h-1/2 h-1/2 -translate-y-full -translate-y-full pl-0 pl-0'
-export const authBtn = 'font-shrikhand text-tetrisYellow-100 w-1/3 m-auto rounded py-2 shadow';
+export const authBtn = 'font-shrikhand text-tetrisYellow-100 w-1/2 md:w-1/4 m-auto rounded py-2 shadow';
 export const authNavBtn = 'font-patrick-hand text-tetrisPurple-500 mt-10 w-auto';
-export const authError = 'flex flex-col absolute uppercase items-center font-patrick-hand text-tetrisYellow-100'
+export const authError = 'absolute w-3/4 lg:w-1/2 my-5 text-center uppercase items-center font-patrick-hand text-tetrisYellow-100'

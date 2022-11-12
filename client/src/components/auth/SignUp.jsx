@@ -40,7 +40,7 @@ function SignUp() {
     const { name, value } = e.target;
     if (value === '') return setCredentials({ ...credentials, [name]: value });
     if (/ $/.test(value)) return setError(`Space not allowed`);
-    if (!validate({name, value})) return setError(`Character ${value[value.length - 1]} not allowed`);
+    if (!validate({name, value})) return setError(`Character "${value[value.length - 1]}" not allowed in ${name}`);
     
     validate({ name, value }) && setCredentials({ ...credentials, [name]: value });
   };
@@ -53,11 +53,11 @@ function SignUp() {
 
   return (
     <section className={`${styles.authFormContainer}`}>
-      { error ? <Error className={styles.authError} msg={authError ? authError : error} /> : null }
       <FormSignUp 
         credentials={credentials}
         handleChange={handleChange}
         handleSubmit={handleSubmit} />
+      { error ? <Error className={styles.authError} msg={authError ? authError : error} /> : null }
     </section>
   );
 }
