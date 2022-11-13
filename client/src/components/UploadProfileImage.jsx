@@ -11,28 +11,23 @@ import { editUserImage } from '../context/store/auth/actions.js';
 
 // Components
 import Input from './layout/Input';
-import Error from './error/Error';
 
 // Styles
 import * as styles from '../style'
 
 const UploadProfileImage = () => {
-  // const { uid, image, authError } = useSelector(state => state.auth);
+  // const { uid, image } = useSelector(state => state.auth);
   // const dispatch = useDispatch();
 
-  const { state: { uid, image, authError }, dispatch } = useContext(AuthContext);
+  const { state: { uid, image }, dispatch } = useContext(AuthContext);
   
   const [ newImage, setNewImage ] = useState(image);
   const [ imageLoaded, setImageLoaded ] = useState(false);
 
-  const [error, setError] = useState('');
-  useEffect(() => {
-    if (authError) setError(authError)
-  },[authError]);
-
   const handleChange = (e) => {
-    setNewImage(e.target.files[0]);
-    dispatch(editUserImage({ uid, image: e.target.files[0]}));
+    const { files } = e.target;
+    setNewImage(files[0]);
+    dispatch(editUserImage({ uid, image: files[0]}));
   };
 
   return (
@@ -59,7 +54,6 @@ const UploadProfileImage = () => {
           onChange={ handleChange }
         />
       </label>
-      { error ? <Error className={`${styles.authError}`} msg={authError ? authError : error} /> : null }
     </article>
   )
 }

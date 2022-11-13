@@ -4,7 +4,6 @@ import React from 'react'
 import * as styles from '../../style'
 
 const IconSettings = ({ color, className, handleClick }) => {
-  console.log(color);
   return (
     <>
       <svg onClick={handleClick} className={ className } viewBox="0 0 512 512">

@@ -32,33 +32,38 @@ router.route('/:uid/image').put(uploader.single("file"), async (req, res) => {
     }
 });
 
-router.route(`/:uid`).put(async (req, res) => {
+const editUsername = async (req, res) => {
   try {
     const { uid } = req.params;
-    const { username } = req.body;
-    const { bio } = req.body;
+    const username = req.body.username.toLowerCase();
 
-    const currentUser = await User.findOne({ uid });
+    const currentUser = await User.findOne({ username });
 
     if (currentUser && currentUser.uid !== uid ) {
-      throw new Error('Username is taken');
+      throw new Error(`Username ${currentUser.username} is taken`);
     }
 
-    const updatedUser = await User.findOneAndUpdate({ uid }, {
-        username: username ? username.toLowerCase() : currentUser.username,
-        bio: bio ? bio : currentUser.bio,
-     })
-
-    return res.status(201).json({ 
-      uid,
-      username: updatedUser.username,
-      bio: updatedUser.bio,
-      image: currentUser.image,
-    });
+    await User.findOneAndUpdate({ uid }, { username });
+    return res.status(201).json({ username }).end();
   } catch (err) {
-    console.error(err);
-    res.status(401).json(err.message).end();
+    return res.status(401).json(err.message);
   }
+};
+
+const editBio = async (req, res) => {
+  try {
+    const { uid } = req.params;
+    const { bio } = req.body;
+    await User.findOneAndUpdate({ uid }, { bio });
+    return res.status(201).json({ bio }).end();
+  } catch (err) {
+    return res.status(401).json(err.message);
+  }
+};
+
+router.route(`/:uid`).put(async (req, res) => {
+  req.body.username && await editUsername(req, res);
+  req.body.bio && await editBio(req, res);
 });
 
 router.route('/:uid').delete( async (req, res) => {

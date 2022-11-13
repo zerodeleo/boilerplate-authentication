@@ -20,19 +20,21 @@ const Bio = () => {
 
   const [newBio, setNewBio] = useState(bio);
 
-  useEffect(() => {
-    dispatch(editUser({ uid, bio: newBio }));
-  }, [uid, newBio, dispatch]);
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setNewBio(value);
+    uid && dispatch(editUser({ uid, bio: value }));
+  };
 
   return (
     <article className={`${styles.bioContainer}`}>
       <textarea
-        onChange={(e) => setNewBio(e.target.value)}
+        onChange={handleChange}
         value={ newBio }
         className={`z-50 ${styles.bio}`}/>
-      <div className={`absolute ${styles.bio}`}>{ !newBio && 'Pssst... write your bio here' }</div>
+      <p className={`${styles.bio} absolute left-0 w-full text-center`}>{ !newBio && 'Pssst... write your bio here' }</p>
     </article>
   )
-}
+};
 
-export default Bio
+export default Bio;

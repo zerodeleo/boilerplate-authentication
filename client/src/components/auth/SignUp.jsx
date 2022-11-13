@@ -61,7 +61,7 @@ function SignUp() {
         credentials={credentials}
         handleChange={handleChange}
         handleSubmit={handleSubmit} />
-      { error ? <Error className={styles.authError} msg={authError ? authError : error} /> : null }
+      { error && <Error className={styles.authError} msg={authError ? authError : error} /> }
     </section>
   );
 };
