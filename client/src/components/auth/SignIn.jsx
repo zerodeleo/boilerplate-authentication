@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-// import { signIn } from '../../store/auth/actions'
+// import { signIn } from '../../redux/store/auth/actions'
 
 // Context
 import { AuthContext } from '../../context/AuthContextProvider';

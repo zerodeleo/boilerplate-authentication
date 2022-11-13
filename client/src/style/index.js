@@ -6,7 +6,7 @@ export const h1 = 'font-shrikhand text-tetrisYellow-100 text-7xl mb-10';
 export const h2 = 'font-patrick-hand text-tetrisYellow-100 text-4xl my-5';
 export const fullCircle = 'w-full h-full rounded-full aspect-square';
 export const hoverOpacity = 'hover:opacity-60 hover:transition transition';
-export const hoverEffect = 'ease-out transition-all hover:rotate-12'
+export const hoverEffect = 'ease-out transition-all hover:opacity-60'
 export const hoverEffectVisible = 'ease-out transition-all hover:opacity-90'
 
 // Sign in and sign up form
@@ -22,9 +22,9 @@ export const authError = 'absolute w-3/4 lg:w-1/2 my-5 text-center uppercase ite
 // Dash
 export const dashUsername = 'font-shrikhand';
 export const authBtnContainer = 'flex fixed bottom-0 w-full';
-export const authSettingsBtn = 'font-patrick-hand my-5 text-tetrisYellow-100 w-24 h-24 m-auto rounded-full py-2 shadow hover:scale-105';
+export const authSettingsBtn = 'font-shrikhand my-5 text-tetrisYellow-100 w-28 h-28 m-auto rounded-full py-2 shadow hover:scale-105';
 
-export const profileImageContainer = 'flex flex-col justify-center items-center w-1/2 md:w-1/3 lg:w-1/4'
+export const profileImageContainer = 'flex flex-col justify-center items-center w-1/2 md:w-1/3 lg:w-1/6'
 export const profileImageLabel = `${fullCircle} flex flex-col justify-center items-center shadow-lg cursor-pointer`
 export const profileImage = `${fullCircle} ${hoverOpacity} object-cover`
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-// import { editUser } from '../store/auth/actions.js';
+// import { editUser } from '../redux/store/auth/actions.js';
 
 // Context
 import { AuthContext } from '../context/AuthContextProvider.jsx';

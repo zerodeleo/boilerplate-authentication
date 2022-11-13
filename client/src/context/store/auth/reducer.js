@@ -11,7 +11,6 @@ export const initialState = {
   authLoading: false,
   authError: false,
 };
-
 const user = ({state, action: { payload: { data: { uid, username, bio, image } } }}) => {
   return {
   ...state,
@@ -23,7 +22,7 @@ const user = ({state, action: { payload: { data: { uid, username, bio, image } }
   authLoading: false,
   authError: false,
 }};
-const loading = ({ state, action }) => {
+const loading = ({ state }) => {
   return {
   ...state,
   authSuccess: false,
@@ -39,7 +38,6 @@ const err = ({ state, action }) => {
 }};
 
 const authReducer = (state = initialState, action) => {
-  console.log(action);
   switch(action.type) {
     case types.signInSuccess:
       return user({state, action});
@@ -47,30 +45,35 @@ const authReducer = (state = initialState, action) => {
       return loading({state, action});
     case types.signInError:
       return err({state, action});
+
     case types.signUpSuccess:
       return user({state, action});
     case types.signUpLoading:
-      return loading({state, action});
+      return loading({state});
     case types.signUpError:
       return err({state, action});
+
     case types.editUserSuccess:
       return user({state, action});
     case types.editUserLoading:
-      return loading({state, action});
+      return loading({state});
     case types.editUserError:
       return err({state, action});
+
     case types.editUserImageSuccess:
       return user({state, action});
     case types.editUserImageLoading:
-      return loading({state, action});
+      return loading({state});
     case types.editUserImageError:
       return err({state, action});
+
     case types.logoutUserSuccess:
       return { ...initialState };
     case types.logoutUserLoading:
       return { ...initialState, authLoading: true, action };
     case types.logoutUserError:
       return { ...initialState, authError: true, action };
+
     case types.deleteUserSuccess:
       return { ...initialState };
     case types.deleteUserLoading:

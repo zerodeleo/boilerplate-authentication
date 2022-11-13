@@ -4,7 +4,7 @@ import './assets/main.css';
 
 // Redux
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { store } from './redux/store';
 
 // Context
 import AuthContextProvider from './context/AuthContextProvider';

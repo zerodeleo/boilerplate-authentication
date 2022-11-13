@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-// import { logoutUser, deleteUser } from '../store/auth/actions.js';
+// import { logoutUser, deleteUser } from '../redux/store/auth/actions.js';
 
 // Context
 import { AuthContext } from '../context/AuthContextProvider.jsx';
@@ -22,7 +22,7 @@ const Settings = () => {
   // const { uid } = useSelector(state => state.auth);
   // const dispatch = useDispatch();
 
-  const { state: { uid, bio }, dispatch } = useContext(AuthContext);
+  const { state: { uid }, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -39,10 +39,10 @@ const Settings = () => {
         txt={'Delete'}
         txtnextline={'Account'}
         onClick={() => dispatch(deleteUser({ uid }))}/>
-      <IconBack
-        color="tetrisPurple"
+      <Button
+        txt="Back"
         className={`cursor-pointer ${styles.authSettingsBtn}`} 
-        handleClick={() => navigate('/')}/>
+        onClick={() => navigate('/')}/>
     </article>
   )
 }

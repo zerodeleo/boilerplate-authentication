@@ -12,7 +12,7 @@ import { useContext } from 'react';
 import Welcome from './Welcome';
 import UploadProfileImage from './UploadProfileImage';
 import Bio from './Bio';
-import IconSetting from './icons/IconSettings.jsx';
+import Button from './layout/Button.jsx';
 
 // Styles
 import * as styles from '../style'
@@ -31,10 +31,10 @@ const Dash = () => {
       <Welcome/>
       <UploadProfileImage/>
       <Bio/>
-      <IconSetting
-        className={`${styles.hoverEffect} w-1/6 md:w-1/12 cursor-pointer`} 
-        color="tetrisPurple" 
-        handleClick={() => navigate('/settings')}/>
+      <Button
+        className={`${styles.hoverEffect} font-shrikhand text-tetrisYellow-100 w-1/6 md:w-1/12 cursor-pointer`}
+        txt="Settings"
+        onClick={() => navigate('/settings')}/>
     </section>
   );
 };

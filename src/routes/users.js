@@ -48,7 +48,7 @@ router.route(`/:uid`).put(async (req, res) => {
         username: username ? username.toLowerCase() : currentUser.username,
         bio: bio ? bio : currentUser.bio,
      })
-     console.log(updatedUser);
+
     return res.status(201).json({ 
       uid,
       username: updatedUser.username,
