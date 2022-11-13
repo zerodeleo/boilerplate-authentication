@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+// import { signUp } from '../../store/auth/actions';
+
+// Context
+import { AuthContext } from '../../context/AuthContextProvider';
+import { useContext } from 'react';
+import { signUp } from '../../context/store/auth/actions';
+
 // Components
 import Error from '../error/Error';
 import FormSignUp from './FormSignUp';
-
-// Hooks Context
-import { useSelector, useDispatch } from 'react-redux';
-
-// Hooks Redux
-import { useContext } from 'react';
-
-// Redux Dispatches
-// import { signUp } from '../../store/auth/actions';
-
-// Context Dispatches
-import { signUp } from '../../context/store/auth/actions';
 
 // Styles
 import * as styles from '../../style'
 
 // Utils
 import { validate } from '../../utils/regex';
-import { AuthContext } from '../../context/AuthContextProvider';
 
 function SignUp() {
   const [credentials, setCredentials] = useState({
@@ -34,7 +30,6 @@ function SignUp() {
   // const dispatch = useDispatch();
   // const { uid, authError } = useSelector((state) => state.auth);
 
-  // Context
   const { state: { authError, uid }, dispatch } = useContext(AuthContext);
 
   useEffect(() => {

@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-// Hooks Redux
+// Redux
 import { useDispatch, useSelector } from 'react-redux';
-
-// Hooks Redux
-import { useContext } from 'react';
+// import { editUser } from '../store/auth/actions.js';
 
 // Context
 import { AuthContext } from '../context/AuthContextProvider.jsx';
-
-// Dispatches Redux
-// import { editUser } from '../store/auth/actions.js';
-
-// Dispatches Context
+import { useContext } from 'react';
 import { editUser } from '../context/store/auth/actions.js';
 
 // Styles

@@ -1,27 +1,27 @@
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-// Components
-import UploadProfileImage from './UploadProfileImage';
-import Bio from './Bio';
-import Welcome from './Welcome';
-import Button from './layout/Button';
-
-// Hooks Redux
-import { useSelector } from 'react-redux';
-
-// Hooks Context
-import { useContext } from 'react';
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
 
 // Context
-import { AuthContext } from '../context/AuthContextProvider';
+import { AuthContext } from '../context/AuthContextProvider.jsx';
+import { useContext } from 'react';
+
+// Components
+import Welcome from './Welcome';
+import UploadProfileImage from './UploadProfileImage';
+import Bio from './Bio';
+import Button from './layout/Button';
 
 // Styles
 import * as styles from '../style'
 
 const Dash = () => {
-  // const { uid } = useSelector(state => state.auth);
   const navigate = useNavigate();
+
+  // const { uid } = useSelector(state => state.auth);
+  
   const { state: { uid } } = useContext(AuthContext);
 
   if (!uid) return <Navigate to="/signin" />;

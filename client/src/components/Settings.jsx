@@ -1,23 +1,17 @@
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-// Components
-import Button from './layout/Button';
-
-// Hooks Redux
+// Redux
 import { useDispatch, useSelector } from 'react-redux';
-
-// Hooks Context
-import { useContext } from 'react';
-
-// Context
-import { AuthContext } from '../context/AuthContextProvider'
-
-// Redux Dispatches
 // import { logoutUser, deleteUser } from '../store/auth/actions.js';
 
-// Context Dispatches
+// Context
+import { AuthContext } from '../context/AuthContextProvider.jsx';
+import { useContext } from 'react';
 import { logoutUser, deleteUser } from '../context/store/auth/actions.js';
+
+// Components
+import Button from './layout/Button';
 
 // Styles
 import * as styles from '../style'
