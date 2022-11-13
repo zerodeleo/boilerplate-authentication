@@ -9,6 +9,7 @@ import SignUp from './components/auth/SignUp';
 
 // Styles
 import * as styles from './style'
+import Settings from './components/Settings';
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route exact path="/" element={<Dash />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
           <Footer />
         </Router>
