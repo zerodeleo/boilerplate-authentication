@@ -1,13 +1,20 @@
 import React from 'react'
 
-// Redux
+// Hooks Redux
 import { useSelector } from 'react-redux';
+
+// Hooks Context
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../context/AuthContextProvider';
 
 // Styles
 import * as styles from '../style'
 
 const Welcome = () => {
-  const { username } = useSelector(state => state.auth);
+  // const { username } = useSelector(state => state.auth);
+  const { state: { username } } = useContext(AuthContext);
 
   return (
     <article className={`${styles.container}`}>

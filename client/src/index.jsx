@@ -6,12 +6,17 @@ import './assets/main.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
+// Context
+import AuthContextProvider from './context/AuthContextProvider';
+
 // Components
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={ store }>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </Provider>
 );

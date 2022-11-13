@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
+// Hooks Redux
+import { useDispatch, useSelector } from 'react-redux';
+
+// Hooks Context
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../../context/AuthContextProvider';
 
 // Components
 import Error from '../error/Error';
@@ -9,8 +17,11 @@ import FormSignIn from './FormSignIn';
 // Styles
 import * as styles from '../../style'
 
-// Thunks
-import { signIn } from '../../store/auth/actions'
+// Thunks Redux
+// import { signIn } from '../../store/auth/actions'
+
+// Thunks Context
+import { signIn } from '../../context/store/auth/actions'
 
 // Utils
 import { validate } from '../../utils/regex';
@@ -21,12 +32,15 @@ const SignIn = () => {
     password: '',
   });
   const [error, setError] = useState(false);
-  const dispatch = useDispatch();
 
-  const { 
-    uid,
-    authError 
-  } = useSelector((state) => state.auth);
+  // Redux
+  // const { uid, authError } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
+
+  // Context
+  const { state: { authError, uid }, dispatch } = useContext(AuthContext);
+
+  console.log(authError);
   
   useEffect(() => {
     if (authError) setError(authError)

@@ -7,15 +7,22 @@ import Bio from './Bio';
 import Welcome from './Welcome';
 import Button from './layout/Button';
 
-// Redux
+// Hooks Redux
 import { useSelector } from 'react-redux';
+
+// Hooks Context
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../context/AuthContextProvider';
 
 // Styles
 import * as styles from '../style'
 
 const Dash = () => {
-  const { uid } = useSelector(state => state.auth);
+  // const { uid } = useSelector(state => state.auth);
   const navigate = useNavigate();
+  const { state: { uid } } = useContext(AuthContext);
 
   if (!uid) return <Navigate to="/signin" />;
 

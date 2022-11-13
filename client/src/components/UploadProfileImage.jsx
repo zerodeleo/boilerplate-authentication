@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-// Redux
+// Hooks Redux
 import { useDispatch, useSelector } from 'react-redux';
+
+// Hooks Context
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../context/AuthContextProvider.jsx';
 
 // Dispatches
 import { editUserImage } from '../store/auth/actions.js';
@@ -14,8 +20,10 @@ import Error from './error/Error';
 import * as styles from '../style'
 
 const UploadProfileImage = () => {
-  const { uid, image, authError } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+  // const { uid, image, authError } = useSelector(state => state.auth);
+  // const dispatch = useDispatch();
+
+  const { state: { uid, image, authError }, dispatch } = useContext(AuthContext);
   
   const [ newImage, setNewImage ] = useState(image);
 

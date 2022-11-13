@@ -4,18 +4,30 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // Components
 import Button from './layout/Button';
 
-// Redux
+// Hooks Redux
 import { useDispatch, useSelector } from 'react-redux';
 
-// Dispatches
-import { logoutUser, deleteUser } from '../store/auth/actions.js';
+// Hooks Context
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../context/AuthContextProvider'
+
+// Redux Dispatches
+// import { logoutUser, deleteUser } from '../store/auth/actions.js';
+
+// Context Dispatches
+import { logoutUser, deleteUser } from '../context/store/auth/actions.js';
 
 // Styles
 import * as styles from '../style'
 
 const Settings = () => {
-  const { uid } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+  // const { uid } = useSelector(state => state.auth);
+  // const dispatch = useDispatch();
+
+  const { state: { uid }, dispatch } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   if (!uid) return <Navigate to="/signin" />;

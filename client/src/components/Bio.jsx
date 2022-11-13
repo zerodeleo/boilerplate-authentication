@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-// Redux
+// Hooks Redux
 import { useDispatch, useSelector } from 'react-redux';
 
-// Dispatches
-import { editUser } from '../store/auth/actions.js';
+// Hooks Redux
+import { useContext } from 'react';
+
+// Context
+import { AuthContext } from '../context/AuthContextProvider.jsx';
+
+// Dispatches Redux
+// import { editUser } from '../store/auth/actions.js';
+
+// Dispatches Context
+import { editUser } from '../context/store/auth/actions.js';
 
 // Styles
 import * as styles from '../style';
 
 const Bio = () => {
-  const { uid, bio } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+  // const { uid, bio } = useSelector(state => state.auth);
+  // const dispatch = useDispatch();
+
+  const { state: { uid, bio }, dispatch } = useContext(AuthContext);
 
   const [newBio, setNewBio] = useState(bio);
 

@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 // Components
 import Error from '../error/Error';
 import FormSignUp from './FormSignUp';
 
-// Dispatches
-import { signUp } from '../../store/auth/actions';
+// Hooks Context
+import { useSelector, useDispatch } from 'react-redux';
+
+// Hooks Redux
+import { useContext } from 'react';
+
+// Redux Dispatches
+// import { signUp } from '../../store/auth/actions';
+
+// Context Dispatches
+import { signUp } from '../../context/store/auth/actions';
 
 // Styles
 import * as styles from '../../style'
 
 // Utils
 import { validate } from '../../utils/regex';
+import { AuthContext } from '../../context/AuthContextProvider';
 
 function SignUp() {
   const [credentials, setCredentials] = useState({
@@ -22,12 +31,11 @@ function SignUp() {
     passwordRepeat: ''
   });
   const [error, setError] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const { uid, authError } = useSelector((state) => state.auth);
 
-  const { 
-    uid,
-    authError
-  } = useSelector((state) => state.auth);
+  // Context
+  const { state: { authError, uid }, dispatch } = useContext(AuthContext);
 
   useEffect(() => {
     if (authError) setError(authError)
