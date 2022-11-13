@@ -25,7 +25,6 @@ router.route('/:uid/image').put(uploader.single("file"), async (req, res) => {
             folder: `/boilerplate/${uid}`
         })
         const image = uploadedResponse.secure_url;
-        console.log(image);
         await User.findOneAndUpdate({ uid }, { image })
         return res.status(201).json({ image });
     } catch (err) {
@@ -49,7 +48,13 @@ router.route(`/:uid`).put(async (req, res) => {
         username: username ? username.toLowerCase() : currentUser.username,
         bio: bio ? bio : currentUser.bio,
      })
-    return res.status(201).json({ ...updatedUser });
+     console.log(updatedUser);
+    return res.status(201).json({ 
+      uid,
+      username: updatedUser.username,
+      bio: updatedUser.bio,
+      image: currentUser.image,
+    });
   } catch (err) {
     console.error(err);
     res.status(401).json(err.message).end();

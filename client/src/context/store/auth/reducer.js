@@ -31,7 +31,6 @@ const loading = ({ state, action }) => {
   authError: false,
 }};
 const err = ({ state, action }) => {
-  console.log(action);
   return {
   ...state,
   authSuccess: false,
@@ -40,6 +39,7 @@ const err = ({ state, action }) => {
 }};
 
 const authReducer = (state = initialState, action) => {
+  console.log(action);
   switch(action.type) {
     case types.signInSuccess:
       return user({state, action});
@@ -52,6 +52,18 @@ const authReducer = (state = initialState, action) => {
     case types.signUpLoading:
       return loading({state, action});
     case types.signUpError:
+      return err({state, action});
+    case types.editUserSuccess:
+      return user({state, action});
+    case types.editUserLoading:
+      return loading({state, action});
+    case types.editUserError:
+      return err({state, action});
+    case types.editUserImageSuccess:
+      return user({state, action});
+    case types.editUserImageLoading:
+      return loading({state, action});
+    case types.editUserImageError:
       return err({state, action});
     case types.logoutUserSuccess:
       return { ...initialState };

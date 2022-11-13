@@ -23,6 +23,7 @@ const UploadProfileImage = () => {
   const { state: { uid, image, authError }, dispatch } = useContext(AuthContext);
   
   const [ newImage, setNewImage ] = useState(image);
+  const [ imageLoaded, setImageLoaded ] = useState(false);
 
   const [error, setError] = useState('');
   useEffect(() => {
@@ -40,7 +41,9 @@ const UploadProfileImage = () => {
         { newImage ?
         <div className={`${styles.fullCircle}`}>
           <img
+            style={imageLoaded ? {} : { display: 'none' }}
             alt="profile"
+            onLoad={() => setImageLoaded(true)}
             src={ newImage === image ? newImage : URL.createObjectURL(newImage) }
             className={`${styles.profileImage}`}/> 
         </div> : 

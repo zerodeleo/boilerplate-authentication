@@ -12,6 +12,8 @@ import { logoutUser, deleteUser } from '../context/store/auth/actions.js';
 
 // Components
 import Button from './layout/Button';
+import IconBack from './icons/IconBack.jsx';
+import IconDeleteUser from './icons/IconDeleteUser.jsx';
 
 // Styles
 import * as styles from '../style'
@@ -20,36 +22,27 @@ const Settings = () => {
   // const { uid } = useSelector(state => state.auth);
   // const dispatch = useDispatch();
 
-  const { state: { uid }, dispatch } = useContext(AuthContext);
+  const { state: { uid, bio }, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   if (!uid) return <Navigate to="/signin" />;
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    const { name } = e.target;
-    name === 'logout' && dispatch(logoutUser());
-    name === 'delete' && dispatch(deleteUser({ uid }));
-  };
-
   return (
     <article className={`${styles.container}`}>
       <Button
         className={`${styles.authSettingsBtn}`}
-        onClick={handleClick}
-        name='logout'
+        onClick={() => dispatch(logoutUser())}
         txt='Log Out'/>
       <Button
-        className={`${styles.authSettingsBtn}`}
-        onClick={handleClick}
-        name='delete'
-        txt={`Delete`}
-        txtnextline={`Account`}/>
-      <Button
-        className={`${styles.authSettingsBtn}`}
-        onClick={() => navigate('/')}
-        txt={`home`}/>
+        className={`${styles.authSettingsBtn}`} 
+        txt={'Delete'}
+        txtnextline={'Account'}
+        onClick={() => dispatch(deleteUser({ uid }))}/>
+      <IconBack
+        color="tetrisPurple"
+        className={`cursor-pointer ${styles.authSettingsBtn}`} 
+        handleClick={() => navigate('/')}/>
     </article>
   )
 }

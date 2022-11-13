@@ -6,6 +6,8 @@ export const h1 = 'font-shrikhand text-tetrisYellow-100 text-7xl mb-10';
 export const h2 = 'font-patrick-hand text-tetrisYellow-100 text-4xl my-5';
 export const fullCircle = 'w-full h-full rounded-full aspect-square';
 export const hoverOpacity = 'hover:opacity-60 hover:transition transition';
+export const hoverEffect = 'ease-out transition-all hover:rotate-12'
+export const hoverEffectVisible = 'ease-out transition-all hover:opacity-90'
 
 // Sign in and sign up form
 export const authFormContainer = 'rounded-lg w-3/4 lg:w-1/2';
