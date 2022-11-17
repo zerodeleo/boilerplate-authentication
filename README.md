@@ -24,7 +24,7 @@ Kudos to Christian Ek for encrypting the password.
 - How do I deploy my app?
 - How do I connect my app to a db?
 - How do I manage my db schema?
-- How do I manage my state?
+- How do I manage my state asynchronously?
 - How do I connect my backend with my frontend?
 - How do I setup my API?
 - Backend routing?
