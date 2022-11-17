@@ -1,6 +1,10 @@
 # zerodeleo
 ## 💻💻💻 MERN-STACK BOILERPLATE
 Follow these easy steps and you will have a fullstack MERN application up and running within 10min.
+✅ Basic authentication service
+✅ Uploading images to cloudinary
+
+This setup includes managing state asynchronously with useContext OR react-redux.
 
 When I started coding I spent so many hours trying to figure out how to create the perfect work environment for my fullstack applications. How do I get it up and running...?
 
@@ -41,3 +45,9 @@ Kudos to Christian Ek for encrypting the password.
 - Enable automatic deploys
 - Add .env variables to heroku config vars
 - Add <code>MODE="production"</code> to heroku config vars
+## 2. Setting up cloudinary
+- Create account on cloudinary and follow their steps
+- Add .env variables
+- <code>CLOUDINARY_CLOUD_NAME</code>
+- <code>CLOUDINARY_API_KEY</code>
+- <code>CLOUDINARY_API_SECRET</code>
