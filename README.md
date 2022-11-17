@@ -32,6 +32,10 @@ Kudos to Christian Ek for encrypting the password.
 - How do I authenticate a user?
 
 # SETUP
+
+Clone this repo.
+Install dependencies in root and client folder.
+
 ## 1. Setting up mongodb
 - Login to mongodb atlas
 - Create new project
