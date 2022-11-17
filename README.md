@@ -15,6 +15,7 @@ Kudos to Christian Ek for encrypting the password.
 
 ### This is a WIP repo.
 - TS will be implemented
+- Easy toggle between useContext or react redux
 - ✅ Tailwind will be added
 - ✅ the Redux state management will be refactored to use Redux slices
 - Etc.
