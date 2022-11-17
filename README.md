@@ -1,7 +1,9 @@
 # zerodeleo
 ## 💻💻💻 MERN-STACK BOILERPLATE
 Follow these easy steps and you will have a fullstack MERN application up and running within 10min.
+
 ✅ Basic authentication service
+
 ✅ Uploading images to cloudinary
 
 This setup includes managing state asynchronously with useContext OR react-redux.
