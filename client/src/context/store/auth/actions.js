@@ -1,5 +1,5 @@
 import axios from "axios";
-import dispatches from "./types";
+import types from "./types";
 
 const file = (file) => {
   const formData = new FormData();
@@ -8,53 +8,53 @@ const file = (file) => {
 }
 
 export const signIn = ({ username, password }) => async dispatch => {
-  dispatch({ type: dispatches.signInLoading });
+  dispatch({ type: types.signInLoading });
   try {
     const payload = await axios.post('/api/authenticate/signin', { username, password });
-    dispatch({ type: dispatches.signInSuccess, payload });
+    dispatch({ type: types.signInSuccess, payload });
   } catch (err) {
-    dispatch({ type: dispatches.signInError, err });
+    dispatch({ type: types.signInError, err });
   }
 };
 
 export const signUp = ({ username, password }) => async dispatch => {
-  dispatch({ type: dispatches.signUpLoading });
+  dispatch({ type: types.signUpLoading });
   try {
     const payload = await axios.post('/api/authenticate/signup', { username, password });
-    dispatch({ type: dispatches.signUpSuccess, payload });
+    dispatch({ type: types.signUpSuccess, payload });
   } catch (err) {
-    dispatch({ type: dispatches.signUpError, err });
+    dispatch({ type: types.signUpError, err });
   }
 };
 
 export const editUser = ({ uid, username, password, bio }) => async dispatch => {
-  dispatch({ type: dispatches.editUserLoading });
+  dispatch({ type: types.editUserLoading });
   try {
     const payload = await axios.put(`/api/users/${uid}`, { username, password, bio });
-    dispatch({ type: dispatches.editUserSuccess, payload });
+    dispatch({ type: types.editUserSuccess, payload });
   } catch (err) {
-    dispatch({ type: dispatches.editUserError, err });
+    dispatch({ type: types.editUserError, err });
   }
 };
 
 export const editUserImage = ({ uid, image }) => async dispatch => {
-  dispatch({ type: dispatches.editUserImageLoading });
+  dispatch({ type: types.editUserImageLoading });
   try {
     const payload = await axios.put(`/api/users/${uid}/image`, file(image));
-    dispatch({ type: dispatches.editUserImageSuccess, payload });
+    dispatch({ type: types.editUserImageSuccess, payload });
   } catch (err) {
-    dispatch({ type: dispatches.editUserImageError, err });
+    dispatch({ type: types.editUserImageError, err });
   }
 };
 
 export const deleteUser = ({ uid }) => async dispatch => {
-  dispatch({ type: dispatches.deleteUserLoading });
+  dispatch({ type: types.deleteUserLoading });
   try {
     const payload = await axios.delete(`/api/users/${uid}`);
-    dispatch({ type: dispatches.deleteUserSuccess, payload });
+    dispatch({ type: types.deleteUserSuccess, payload });
   } catch (err) {
-    dispatch({ type: dispatches.deleteUserError, err });
+    dispatch({ type: types.deleteUserError, err });
   }
 };
 
-export const logoutUser = () => async dispatch => dispatch({ type: dispatches.logoutUserSuccess });
+export const logoutUser = () => async dispatch => dispatch({ type: types.logoutUserSuccess });
