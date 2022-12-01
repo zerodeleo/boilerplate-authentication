@@ -6,10 +6,11 @@ require("dotenv").config();
 
 //config body-parser to post data
 const cors = require('cors');
-const bodyParser = require('body-parser')
-app.use(cors())
-app.use(bodyParser.urlencoded({ limit: '50mb', extended:true }))
-app.use(bodyParser.json({ limit: '50mb' }))
+app.use(cors());
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ limit: '50mb', extended:true }));
+app.use(bodyParser.json({ limit: '50mb' }));
 
 // Connect to MongoDB
 const mongoose = require('mongoose');
