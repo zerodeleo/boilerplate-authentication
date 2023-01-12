@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm i && npm run build",
     "install-client": "cd client && npm install",
     "server": "nodemon index.js",
     "client": "npm run start --prefix ./client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "postbuild": "npm run install-client && npm run build",
     "start": "node index.js",
-    "install-all": "npm i && cd client && npm i"
+    "install-all": "npm i && npm run install-client"
   },
   "author": "zerodeleo",
   "license": "ISC",
