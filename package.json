@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd app && cd client && npm run build",
+    "build": "cd client && npm run build",
     "server": "nodemon index.js",
-    "client": "npm run start --prefix ./app/client",
+    "client": "npm run start --prefix ./client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "postinstall": "cd app && cd client && npm i"
+    "postinstall": "cd client && npm i"
   },
   "author": "zerodeleo",
   "license": "ISC",
