@@ -25,6 +25,7 @@ router.route('/:uid/image').put(uploader.single("file"), async (req, res) => {
             folder: `/boilerplate/${uid}`
         })
         const image = uploadedResponse.secure_url;
+        console.log(uploadedResponse);
         await User.findOneAndUpdate({ uid }, { image })
         return res.status(201).json({ image });
     } catch (err) {

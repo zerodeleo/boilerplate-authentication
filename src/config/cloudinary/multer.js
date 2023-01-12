@@ -2,5 +2,5 @@ const multer = require('multer');
 
 module.exports = multer({
   storage: multer.diskStorage({}),
-  limits: { fileSize: 5000000 }
+  limits: { fileSize: 500000000000 }
 });
