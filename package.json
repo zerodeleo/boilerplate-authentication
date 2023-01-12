@@ -4,17 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "install-server": "npm install",
     "server": "nodemon index.js",
     "client": "npm run start --prefix ./client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "postbuild": "npm run install-client && npm run build",
-    "start": "node index.js",
-    "install-all": "npm i && npm run install-client",
-    "install": "npm install concurrently --save & concurrently \"npm run install-server\" \"npm run install-client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "postinstall": "cd client && npm i"
   },
   "author": "zerodeleo",
   "license": "ISC",
